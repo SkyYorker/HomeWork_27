@@ -12,6 +12,6 @@ class Ads(models.Model):
     price = models.IntegerField()
     description = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
-    is_published = models.CharField(max_length=100, default='false')
+    is_published = models.BooleanField( default=False)
 
 # Create your models here.
