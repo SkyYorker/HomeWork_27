@@ -9,9 +9,9 @@ class Category(models.Model):
         verbose_name_plural = 'Категории'
 
     
-    # def __int__(self):
-    #     return self.id
-# Create your models here.
+    def __int__(self):
+        return self.name
+
 class Location(models.Model):
     name = models.CharField(max_length=100)
     lat = models.DecimalField(max_digits=8, decimal_places=6, null=True)
