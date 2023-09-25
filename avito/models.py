@@ -51,8 +51,8 @@ class User(models.Model):
         verbose_name_plural = 'Пользователи'
 
 
-    # def __int__(self):
-    #     return self.id
+    def __int__(self):
+        return self.first_name, self.last_name
     
 
 class Ad(models.Model):
