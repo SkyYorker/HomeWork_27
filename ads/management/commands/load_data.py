@@ -8,8 +8,10 @@ class Command(BaseCommand):
     fixtures_dir = 'fixtures'
     loaddata_command = 'loaddata'
     filenames = [
-        "ads.json",
-        "categories.json",
+        "ad.json",
+        "category.json",
+        "loaction.json",
+        "user.json",
     ]
 
 
