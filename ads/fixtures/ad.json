@@ -1,6 +1,6 @@
 [
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 1,
         "fields": {
             "Id": 1,
@@ -14,7 +14,7 @@
         }
     },
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 2,
         "fields": {
             "Id": 2,
@@ -28,7 +28,7 @@
         }
     },
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 3,
         "fields": {
             "Id": 3,
@@ -42,7 +42,7 @@
         }
     },
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 4,
         "fields": {
             "Id": 4,
@@ -56,7 +56,7 @@
         }
     },
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 5,
         "fields": {
             "Id": 5,
@@ -70,7 +70,7 @@
         }
     },
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 6,
         "fields": {
             "Id": 6,
@@ -84,7 +84,7 @@
         }
     },
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 7,
         "fields": {
             "Id": 7,
@@ -98,7 +98,7 @@
         }
     },
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 8,
         "fields": {
             "Id": 8,
@@ -112,7 +112,7 @@
         }
     },
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 9,
         "fields": {
             "Id": 9,
@@ -126,7 +126,7 @@
         }
     },
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 10,
         "fields": {
             "Id": 10,
@@ -140,7 +140,7 @@
         }
     },
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 11,
         "fields": {
             "Id": 11,
@@ -154,7 +154,7 @@
         }
     },
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 12,
         "fields": {
             "Id": 12,
@@ -168,7 +168,7 @@
         }
     },
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 13,
         "fields": {
             "Id": 13,
@@ -182,7 +182,7 @@
         }
     },
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 14,
         "fields": {
             "Id": 14,
@@ -196,7 +196,7 @@
         }
     },
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 15,
         "fields": {
             "Id": 15,
@@ -210,7 +210,7 @@
         }
     },
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 16,
         "fields": {
             "Id": 16,
@@ -224,7 +224,7 @@
         }
     },
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 17,
         "fields": {
             "Id": 17,
@@ -238,7 +238,7 @@
         }
     },
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 18,
         "fields": {
             "Id": 18,
@@ -252,7 +252,7 @@
         }
     },
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 19,
         "fields": {
             "Id": 19,
@@ -266,7 +266,7 @@
         }
     },
     {
-        "model": "avito.ad",
+        "model": "ads.ad",
         "pk": 20,
         "fields": {
             "Id": 20,

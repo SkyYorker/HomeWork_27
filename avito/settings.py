@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-TOTAL_ON_PAGE = 10
+TOTAL_ON_PAGE = 5
 
 # Application definition
 
@@ -40,8 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'avito',
     'ads',
+    'cat',
+    'user',
+    'loc',
     
 ]
 
@@ -82,9 +86,9 @@ WSGI_APPLICATION = 'avito.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'NAME': 'skypro_l29',
+        'USER': 'skypro_l29',
+        'PASSWORD': 'skypro_l29',
         "HOST": "127.0.0.1",
         "PORT": "5432",
     }
@@ -133,3 +137,8 @@ MEDIA_URL = '/images/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 5
+}

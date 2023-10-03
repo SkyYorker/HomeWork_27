@@ -14,7 +14,7 @@ def convert(csv_file, json_file):
         for i in csv_read:
             counter += 1
             data.append({
-                "model": "avito.ad",
+                "model": "ads.ad",
                 "pk": counter,
                 "fields": {
                    'id': int(i['Id']),

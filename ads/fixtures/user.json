@@ -1,6 +1,6 @@
 [
     {
-        "model": "avito.user",
+        "model": "user.user",
         "pk": 1,
         "fields": {
             "id": "1",
@@ -10,11 +10,11 @@
             "password": "gZvptL",
             "role": "member",
             "age": "21",
-            "location": "1"
+            "locations": "1"
         }
     },
     {
-        "model": "avito.user",
+        "model": "user.user",
         "pk": 2,
         "fields": {
             "id": "2",
@@ -24,11 +24,11 @@
             "password": "4fVqL2",
             "role": "moderator",
             "age": "24",
-            "location": "3"
+            "locations": "3"
         }
     },
     {
-        "model": "avito.user",
+        "model": "user.user",
         "pk": 3,
         "fields": {
             "id": "3",
@@ -38,11 +38,11 @@
             "password": "o535pj",
             "role": "admin",
             "age": "29",
-            "location": "8"
+            "locations": "8"
         }
     },
     {
-        "model": "avito.user",
+        "model": "user.user",
         "pk": 4,
         "fields": {
             "id": "4",
@@ -52,11 +52,11 @@
             "password": "d49rSO",
             "role": "moderator",
             "age": "19",
-            "location": "10"
+            "locations": "10"
         }
     },
     {
-        "model": "avito.user",
+        "model": "user.user",
         "pk": 5,
         "fields": {
             "id": "5",
@@ -66,11 +66,11 @@
             "password": "wCqlVE",
             "role": "member",
             "age": "41",
-            "location": "2"
+            "locations": "2"
         }
     },
     {
-        "model": "avito.user",
+        "model": "user.user",
         "pk": 6,
         "fields": {
             "id": "6",
@@ -80,11 +80,11 @@
             "password": "xuR2jf",
             "role": "member",
             "age": "37",
-            "location": "4"
+            "locations": "4"
         }
     },
     {
-        "model": "avito.user",
+        "model": "user.user",
         "pk": 7,
         "fields": {
             "id": "7",
@@ -94,11 +94,11 @@
             "password": "gzP4vR",
             "role": "member",
             "age": "26",
-            "location": "7"
+            "locations": "7"
         }
     },
     {
-        "model": "avito.user",
+        "model": "user.user",
         "pk": 8,
         "fields": {
             "id": "8",
@@ -108,11 +108,11 @@
             "password": "zo0rj6",
             "role": "member",
             "age": "24",
-            "location": "5"
+            "locations": "5"
         }
     },
     {
-        "model": "avito.user",
+        "model": "user.user",
         "pk": 9,
         "fields": {
             "id": "9",
@@ -122,11 +122,11 @@
             "password": "daMocL",
             "role": "moderator",
             "age": "22",
-            "location": "9"
+            "locations": "9"
         }
     },
     {
-        "model": "avito.user",
+        "model": "user.user",
         "pk": 10,
         "fields": {
             "id": "10",
@@ -136,7 +136,7 @@
             "password": "sasha123456",
             "role": "member",
             "age": "35",
-            "location": "6"
+            "locations": "6"
         }
     }
 ]
