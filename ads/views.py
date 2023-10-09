@@ -3,17 +3,18 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.shortcuts import get_object_or_404
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import DetailView, CreateView, UpdateView
+from rest_framework.generics import UpdateAPIView, DestroyAPIView
 from django.http import JsonResponse
 from rest_framework.generics import ListAPIView
 
 
 from ads.Serializer import AdSerializer
 from ads.models import Ad
-from avito.settings import TOTAL_ON_PAGE
+from ads.permissions import IsOwnerOrAdminOrModerator
 from cat.models import Category
 from user.models import User
-
+from rest_framework.permissions import IsAuthenticated
 
 
 
@@ -21,6 +22,7 @@ from user.models import User
 class AdListView(ListAPIView):
     queryset = Ad.objects.all().order_by('-price')
     serializer_class = AdSerializer
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, *args, **kwargs):
         cat = request.GET.getlist("cat", None)
@@ -50,44 +52,6 @@ class AdListView(ListAPIView):
             )
         return super().get(self, *args, **kwargs)
 
-# @method_decorator(csrf_exempt, name='dispatch')
-# class AdListView(ListView):
-#     model = Ad
-#     queryset = Ad.objects.all()
-#
-#     def get(self, request, *args, **kwargs):
-#         super().get(request, *args, **kwargs)
-#         self.object_list.order_by("-price")
-#         total_ads = self.object_list.count()
-#
-#         page = int(request.GET.get("page", 0))
-#         offset = page * TOTAL_ON_PAGE
-#         if offset > total_ads:
-#             self.object_list = []
-#         elif offset:
-#             self.object_list = self.object_list[offset:TOTAL_ON_PAGE]
-#         else:
-#             self.object_list = self.object_list[:TOTAL_ON_PAGE]
-#
-#         ads = []
-#         for i in self.object_list:
-#             ads.append({
-#                 "name": i.name,
-#                 "price": i.price,
-#                 "description": i.description,
-#                 "is_published": i.is_published,
-#                 "author_id": i.author_id,
-#                 'author': i.author.first_name,
-#                 "category_id": i.category_id
-#             })
-#
-#         response = {
-#             "items": ads,
-#             "total": total_ads,
-#             "per_page": TOTAL_ON_PAGE
-#         }
-#         return JsonResponse(response, safe=False)
-
 
 class AdDetailView(DetailView):
     model = Ad
@@ -106,6 +70,7 @@ class AdDetailView(DetailView):
             "author_id": ad.author_id,
             "category_id": ad.category_id
         })
+
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -127,7 +92,7 @@ class AdCreateView(CreateView):
         )
 
         return JsonResponse({
-            "id": ad.id,
+            "id": ad.Id,
             'name': ad.name,
             'author_id': author.id,
             "author": author.username,
@@ -138,44 +103,54 @@ class AdCreateView(CreateView):
         })
 
 
-@method_decorator(csrf_exempt, name='dispatch')
-class AdUpdateView(UpdateView):
+class AdUpdateView(UpdateAPIView):
     model = Ad
-    fields = ["Id", "name", "price", "description", "is_published", "image", "author", "category"]
-
-    def patch(self, request, *args, **kwargs):
-        super().post(request, *args, **kwargs)
-        ad_data = json.loads(request.body)
-        self.object.name = ad_data['name']
-        self.object.author_id = ad_data['author_id']
-        self.object.price = ad_data["price"]
-        self.object.description = ad_data['description']
-        self.object.category_id = ad_data['category_id']
-        self.object.save()
-
-        return JsonResponse({
-            "id": self.object.Id,
-            'name': self.object.name,
-            'author_id': self.object.author_id,
-            "author": self.object.author.username,
-            'price': self.object.price,
-            'description': self.object.description,
-            "is_published": self.object["is_published"] if "is_published" in ad_data else False,
-            'category_id': self.object.category_id,
-        })
+    queryset = Ad.objects.all()
+    permission_classes = [IsOwnerOrAdminOrModerator]
 
 
-@method_decorator(csrf_exempt, name='dispatch')
-class AdDeleteView(DeleteView):
+# @method_decorator(csrf_exempt, name='dispatch')
+# class AdUpdateView(UpdateView):
+#     model = Ad
+#     fields = ["Id", "name", "price", "description", "is_published", "image", "author", "category"]
+#
+#     def patch(self, request, *args, **kwargs):
+#         super().post(request, *args, **kwargs)
+#         ad_data = json.loads(request.body)
+#         self.object.name = ad_data['name']
+#         self.object.author_id = ad_data['author_id']
+#         self.object.price = ad_data["price"]
+#         self.object.description = ad_data['description']
+#         self.object.category_id = ad_data['category_id']
+#         self.object.save()
+#
+#         return JsonResponse({
+#             "id": self.object.Id,
+#             'name': self.object.name,
+#             'author_id': self.object.author_id,
+#             "author": self.object.author.username,
+#             'price': self.object.price,
+#             'description': self.object.description,
+#             "is_published": self.object["is_published"] if "is_published" in ad_data else False,
+#             'category_id': self.object.category_id,
+#         })
+
+class AdDeleteView(DestroyAPIView):
     model = Ad
-    success_url = '/'
+    queryset = Ad.objects.all()
+    permission_classes = [IsOwnerOrAdminOrModerator]
 
-    def delete(self, request, *args, **kwargs):
-        super().delete(request, *args, **kwargs)
-
-        return JsonResponse({
-            "status": "ok"
-        })
+# @method_decorator(csrf_exempt, name='dispatch')
+# class AdDeleteView(DeleteView):
+#     model = Ad
+#     success_url = '/'
+#
+#     def delete(self, request, *args, **kwargs):
+#         super().delete(request, *args, **kwargs)
+#
+#         return JsonResponse({
+#             "status": "ok"
+#         })
 
 
 @method_decorator(csrf_exempt, name='dispatch')

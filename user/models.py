@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import AbstractUser
 from loc.models import Location
 
 
@@ -15,15 +15,12 @@ class UserRoles:
 
 
 # Create your models here.
-class User(models.Model):
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    username = models.CharField(max_length=100, unique=True)
-    password = models.CharField(max_length=100)
+class User(AbstractUser):
     role = models.CharField(max_length=12, choices=UserRoles.choices, default='member')
     age = models.IntegerField(null=True)
     locations = models.ManyToManyField(Location)
-    class Meta():
+
+    class Meta:
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
 
