@@ -22,7 +22,7 @@ from rest_framework.permissions import IsAuthenticated
 class AdListView(ListAPIView):
     queryset = Ad.objects.all().order_by('-price')
     serializer_class = AdSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request, *args, **kwargs):
         cat = request.GET.getlist("cat", None)
@@ -109,48 +109,12 @@ class AdUpdateView(UpdateAPIView):
     permission_classes = [IsOwnerOrAdminOrModerator]
 
 
-# @method_decorator(csrf_exempt, name='dispatch')
-# class AdUpdateView(UpdateView):
-#     model = Ad
-#     fields = ["Id", "name", "price", "description", "is_published", "image", "author", "category"]
-#
-#     def patch(self, request, *args, **kwargs):
-#         super().post(request, *args, **kwargs)
-#         ad_data = json.loads(request.body)
-#         self.object.name = ad_data['name']
-#         self.object.author_id = ad_data['author_id']
-#         self.object.price = ad_data["price"]
-#         self.object.description = ad_data['description']
-#         self.object.category_id = ad_data['category_id']
-#         self.object.save()
-#
-#         return JsonResponse({
-#             "id": self.object.Id,
-#             'name': self.object.name,
-#             'author_id': self.object.author_id,
-#             "author": self.object.author.username,
-#             'price': self.object.price,
-#             'description': self.object.description,
-#             "is_published": self.object["is_published"] if "is_published" in ad_data else False,
-#             'category_id': self.object.category_id,
-#         })
-
 class AdDeleteView(DestroyAPIView):
     model = Ad
     queryset = Ad.objects.all()
     permission_classes = [IsOwnerOrAdminOrModerator]
 
-# @method_decorator(csrf_exempt, name='dispatch')
-# class AdDeleteView(DeleteView):
-#     model = Ad
-#     success_url = '/'
-#
-#     def delete(self, request, *args, **kwargs):
-#         super().delete(request, *args, **kwargs)
-#
-#         return JsonResponse({
-#             "status": "ok"
-#         })
+
 
 
 @method_decorator(csrf_exempt, name='dispatch')

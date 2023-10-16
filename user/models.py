@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from loc.models import Location
+from user.validators import check_date_for_user, check_email_for_user
 
 
 class UserRoles:
@@ -19,6 +20,8 @@ class User(AbstractUser):
     role = models.CharField(max_length=12, choices=UserRoles.choices, default='member')
     age = models.IntegerField(null=True)
     locations = models.ManyToManyField(Location)
+    birth_date = models.DateField(validators=[check_date_for_user])
+    email = models.EmailField(unique=True, validators=[check_email_for_user])
 
     class Meta:
         verbose_name = 'Пользователь'
